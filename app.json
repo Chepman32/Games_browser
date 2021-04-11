@@ -1,0 +1,41 @@
+{
+  "expo": {
+    "name": "Gaming zone",
+    "slug": "gaming-zone",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "bundleIdentifier": "com.gamingzone.antonchepur",
+      "buildNumber": "1.0.0",
+      "supportsTablet": true,
+      "config": {
+        "googleMobileAdsAppId": "ca-app-pub-2840764267461073~3859560593"
+      }
+    },
+    "android": {
+      "package": "com.gamingzone.antonchepur",
+      "versionCode": 2,
+      "permissions": [
+        "WRITE_EXTERNAL_STORAGE"
+      ],
+      "config": {
+        "googleMobileAdsAppId": "ca-app-pub-2840764267461073~9718391933"
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    }
+  }
+}
