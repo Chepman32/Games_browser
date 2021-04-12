@@ -19,6 +19,7 @@ export const MovieCard = ({ id, title, slug, release_date, overview, imgUrl }) =
   const [platforms, setPlatforms] = useState([])
   const [metacritic, setMetacritic] = useState([])
   const [metacritic_platforms, setMetacritic_platforms] = useState([])
+  const [reddit, setReddit] = useState("")
   const [loaded, setLoaded] = useState(false)
   useEffect(() => {
     getAll()
@@ -29,7 +30,6 @@ export const MovieCard = ({ id, title, slug, release_date, overview, imgUrl }) =
     try {
       const dlcData = await axios.get(`https://api.rawg.io/api/games/${slug}/additions`)
       setDlc([dlcData.data.results])
-      console.log(dlc.length)
     }
     catch(e) {
       console.log(e)
@@ -50,15 +50,17 @@ export const MovieCard = ({ id, title, slug, release_date, overview, imgUrl }) =
     const _background_image_additional = data.data.background_image_additional
     setBackground_image_additional(_background_image_additional)
     const _clip = data.data.clip.clip || ""
+    setClip(_clip)
     const _genres = data.data.genres || []
     setGenres([...genres, _genres])
     const _platforms = data.data.platforms
     setPlatforms([...platforms, _platforms])
-    setClip(_clip)
     setBackground_image_additional(platforms)
     const _metacritic = await data.data.metacritic
     setMetacritic(_metacritic)
     const _metacritic_platforms = data.data.metacritic_platforms
+    const _reddit = data.data.reddit_url
+    setReddit(_reddit)
     setMetacritic_platforms([...metacritic_platforms, _metacritic_platforms])
   }
   return (
@@ -79,7 +81,8 @@ export const MovieCard = ({ id, title, slug, release_date, overview, imgUrl }) =
         platforms,
         metacritic,
         metacritic_platforms,
-        dlc
+        dlc,
+        reddit
       })
     }}
     style={{

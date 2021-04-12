@@ -1,8 +1,11 @@
 import React from "react"
 import { Image, Text, StyleSheet, Linking } from "react-native"
 import { TouchableOpacity } from "react-native-gesture-handler"
+import useColorScheme from "react-native/Libraries/Utilities/useColorScheme"
 import { MAX_WIDTH } from "./constants"
 export const CompanyItem = ({ id, logo, name, url, handler }) => {
+  let colorScheme = useColorScheme()
+    const themeTextStyle = colorScheme === 'light' ? styles.lightThemeText : styles.darkThemeText;
   return (
     <TouchableOpacity onPress={() => {
       url ? Linking.openURL(url) : handler
@@ -10,7 +13,7 @@ export const CompanyItem = ({ id, logo, name, url, handler }) => {
       {
         logo && <Image style={styles.logo} resizeMode="contain" source={{uri: logo}} />
       }
-      <Text style={styles.text} >{name} </Text>
+      <Text style={[styles.text, themeTextStyle]} >{name} </Text>
     </TouchableOpacity>
   )
 }
@@ -32,5 +35,11 @@ const styles = StyleSheet.create({
     opacity: 0.5,
     borderBottomWidth: 3,
     borderColor: "#000"
-  }
+  },
+  lightThemeText: {
+    color: '#000',
+  },
+  darkThemeText: {
+    color: '#fff',
+  },
 })

@@ -23,6 +23,7 @@ import Collapsible from 'react-native-collapsible';
 
 //import for the Accordion view
 import Accordion from 'react-native-collapsible/Accordion';
+import useColorScheme from 'react-native/Libraries/Utilities/useColorScheme';
 
 //Dummy content to show
 //You can also use dynamic data by calling web service
@@ -53,6 +54,10 @@ const SELECTORS = [
 ];
 
 const AccordionComponent = (props) => {
+  let colorScheme = useColorScheme()
+  const themeContainerStyle =
+    colorScheme === 'light' ? styles.lightContainer : styles.darkContainer;
+    const themeTextStyle = colorScheme === 'light' ? styles.lightThemeText : styles.darkThemeText;
   const _content = [
     {
       title: 'Description',
@@ -73,11 +78,6 @@ const AccordionComponent = (props) => {
       title: 'Stores',
       content:
         props.stores
-    },
-    {
-      title: 'DLC',
-      content:
-        props.dlc
     },
   ]
   // Ddefault active selector
@@ -104,9 +104,9 @@ const AccordionComponent = (props) => {
     return (
       <Animatable.View
         duration={400}
-        style={[styles.header, isActive ? styles.active : styles.inactive]}
+        style={[styles.header, isActive ? [styles.active, themeContainerStyle] : [styles.inactive, themeContainerStyle]]}
         transition="backgroundColor">
-        <Text style={styles.headerText}>{section.title}</Text>
+        <Text style={[styles.headerText, themeTextStyle]}>{section.title}</Text>
       </Animatable.View>
     );
   };
@@ -116,7 +116,7 @@ const AccordionComponent = (props) => {
     return (
       <Animatable.View
         duration={400}
-        style={[styles.content, isActive ? styles.active : styles.inactive]}
+        style={[[styles.content, themeContainerStyle], isActive ? [styles.active, themeContainerStyle] : [styles.inactive, themeContainerStyle]]}
         transition="backgroundColor">
         <Animatable.Text
           animation={isActive ? 'bounceIn' : undefined}
@@ -133,16 +133,12 @@ const AccordionComponent = (props) => {
         <ScrollView>
 
           <Collapsible collapsed={collapsed} align="center">
-            <View style={styles.content}>
-              <Text style={{ textAlign: 'center' }}>
-                This is a dummy text of Single Collapsible View
-              </Text>
-            </View>
+
           </Collapsible>
           {/*Code for Single Collapsible Ends*/}
 
           <View style={{ backgroundColor: '#000', height: 1, marginTop: 10 }} />
-          <View style={styles.selectors}>
+          <View style={[styles.selectors, themeContainerStyle]}>
             {SELECTORS.map((selector) => (
               <TouchableOpacity
                 key={selector.title}
@@ -154,7 +150,7 @@ const AccordionComponent = (props) => {
                   <Text
                     style={
                       activeSections.includes(selector.value) &&
-                      styles.activeSelector
+                      [styles.activeSelector, themeContainerStyle]
                     }>
                   </Text>
                 </View>
@@ -250,4 +246,16 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginRight: 8,
   },
+  lightContainer: {
+        backgroundColor: '#fff',
+      },
+      darkContainer: {
+        backgroundColor: '#242c40',
+      },
+      lightThemeText: {
+        color: '#242c40',
+      },
+      darkThemeText: {
+        color: '#fff',
+      },
 });

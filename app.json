@@ -3,6 +3,7 @@
     "name": "Gaming zone",
     "slug": "gaming-zone",
     "version": "1.0.0",
+    "userInterfaceStyle": "automatic",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {

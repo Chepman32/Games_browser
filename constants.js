@@ -5,7 +5,7 @@ export const MAX_HEIGHT = Dimensions.get("screen").height
 const storeIcons = [
     {
         name: "Xbox Store",
-    img: "data:image/jpeg;base64,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"
+    img: "https://compass-ssl.xbox.com/assets/56/72/5672b413-1b6a-4307-b1df-e4ff5311ee8d.svg?n=03958693_App-Icon-0_120x120.svg"
     },
     {
         name: "Steam",
@@ -27,20 +27,42 @@ const storeIcons = [
         name: "Epic Games",
     img: "https://p.kindpng.com/picc/s/200-2007292_transparent-games-clipart-black-and-white-epic-games.png"
     },
+    {
+        name: "Google Play",
+    img: "https://cdn.iconscout.com/icon/free/png-256/google-play-11-722703.png"
+    },
+    {
+        name: "App Store",
+    img: "https://i.pinimg.com/originals/92/3d/d0/923dd092ebf5d55e08be97063316e2c7.png"
+    },
 ]
 export function setIcon(name) {
     const res = storeIcons.find(s => s.name === name)
     return res && res.img
 }
-export function translate(str) {
-    axios.post("https://translate.api.cloud.yandex.net/translate/v2/translate", {
-        headers: {
-            sourceLanguageCode: "en",
-            targetLanguageCode: "de",
-            texts: [
-                "Some fast text"
-            ],
-            folderId: "b1gd129pp9ha0vnvf5g7"
-        }
-    })
+const genresIcons = [
+    {
+        name: "Adventure",
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiVkV3T3cIWM9eHURuUH51gQEKeVU1t8g4CQ&usqp=CAU"
+},
+{
+    name: "Action",
+    img: "https://vistapointe.net/images/cyclops-wallpaper-3.jpg"
+},
+{
+    name: "Shooter",
+    img: "https://i.pinimg.com/originals/b7/bf/a2/b7bfa214491121058a753ab1b523bf6e.png"
+},
+{
+    name: "Puzzle",
+    img: "https://images.vexels.com/media/users/3/141049/isolated/lists/698dcc7cad0a5cb79122634623ab4021-puzzle-cartoon.png"
+},
+{
+    name: "RPG",
+    img: "https://i.pinimg.com/originals/0b/34/56/0b34565da1d5ef5ffadd4e404415ab31.png"
+},
+]
+export const setGenreIcon = (name) => {
+    const res = genresIcons.find(g => g.name === name)
+    return res && res.img
 }

@@ -4,9 +4,13 @@ import axios from 'axios';
 import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState } from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import useColorScheme from 'react-native/Libraries/Utilities/useColorScheme';
 import { API_KEY, MAX_HEIGHT, MAX_WIDTH } from './constants';
 import { MovieCard } from './MovieCard';
 export function Main({ setCurrentLang, storedLang, currentLang }) {
+  let colorScheme = useColorScheme()
+  const themeContainerStyle =
+    colorScheme === 'light' ? styles.lightContainer : styles.darkContainer;
   useEffect(() => {
     getData()
   }, [])
@@ -33,7 +37,7 @@ export function Main({ setCurrentLang, storedLang, currentLang }) {
       contentSize.height - paddingToBottom;
   }
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, themeContainerStyle]}>
       
       <ScrollView 
       bounces={false} 
@@ -137,5 +141,17 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 60
-  }
+  },
+  lightContainer: {
+    backgroundColor: '#fff',
+  },
+  darkContainer: {
+    backgroundColor: '#242c40',
+  },
+  lightThemeText: {
+    color: '#242c40',
+  },
+  darkThemeText: {
+    color: '#d0d0c0',
+  },
 });
